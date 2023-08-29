@@ -13,7 +13,6 @@ function BuscaCEP() {
   const [resultados, setResultados] = useState<Endereco[]>([]);
 
   const buscarCEP = async () => {
-    // Verifica se endereco possui apenas 8 dígitos numéricos.
     if (!/^[0-9]{8}$/.test(endereco)) return;
 
     try {
@@ -27,7 +26,7 @@ function BuscaCEP() {
         }
     } catch (error) {
         console.error("Erro ao buscar CEP:", error);
-        setResultados([]); // Limpa os resultados em caso de erro.
+        setResultados([]);
     }
 };
 

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import HamburgerMenu from '../components/HamburgerMenu';
 
 function Contato() {
@@ -6,6 +6,16 @@ function Contato() {
   const emailRef = useRef<HTMLInputElement>(null);
   const mensagemRef = useRef<HTMLTextAreaElement>(null);
   const arquivoRef = useRef<HTMLInputElement>(null);
+
+  const [forceUpdate, setForceUpdate] = useState(0);
+
+  const limparCampos = () => {
+    if (nomeRef.current) nomeRef.current.value = "";
+    if (emailRef.current) emailRef.current.value = "";
+    if (mensagemRef.current) mensagemRef.current.value = "";
+    if (arquivoRef.current) arquivoRef.current.value = "";
+    setForceUpdate(prev => prev + 1); 
+  };
 
   const enviarFormulario = () => {
     const dados = {
@@ -15,6 +25,9 @@ function Contato() {
       arquivo: arquivoRef.current?.files?.[0] ? arquivoRef.current.files[0].name : null
     };
     console.log(dados);
+
+    limparCampos();
+    alert("Formulário enviado com sucesso!");
   };
 
   return (
@@ -35,12 +48,12 @@ function Contato() {
             placeholder="Email"
             ref={emailRef}
           />
-         <textarea
+          <textarea
             className="w-full p-2 rounded border"
             rows={5}
             placeholder="Mensagem"
             ref={mensagemRef}
-        ></textarea>
+          ></textarea>
           <input
             className="w-full p-2 rounded border"
             type="file"
