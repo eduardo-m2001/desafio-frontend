@@ -1,7 +1,7 @@
-# Desafio FrontEnd - Plin
+# Desafio FrontEnd
 
 ## Sobre o Desafio
-Este projeto foi desenvolvido como parte do processo seletivo da Plin. Ele consiste em uma aplicação NextJS com três funcionalidades principais:
+Este projeto foi desenvolvido como parte do processo seletivo. Ele consiste em uma aplicação NextJS com três funcionalidades principais:
 
 - Clima: Exibe o clima da cidade atual do usuário.
 - Busca de CEP: Permite ao usuário inserir o nome de uma rua e retorna os possíveis resultados para tal consulta.
