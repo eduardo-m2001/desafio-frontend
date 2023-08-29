@@ -38,7 +38,7 @@ $ git clone https://github.com/eduardo-m2001/desafio-frontend
 
 - Execute npm install ou yarn para instalar as dependências.
 - Rode npm run dev ou yarn dev para iniciar o servidor de desenvolvimento.
-- 
+
 [O resultado FINAL pode ser visto aqui](https://desafio-front-plin.netlify.app/)
 
 ___
