@@ -1,4 +1,4 @@
-# Desafio FrontEnd
+# Desafio FrontEnd 🧑‍💻
 
 ## Sobre o Desafio
 Este projeto foi desenvolvido como parte do processo seletivo. Ele consiste em uma aplicação NextJS com três funcionalidades principais:
