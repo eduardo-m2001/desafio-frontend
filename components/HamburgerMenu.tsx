@@ -16,7 +16,7 @@ function HamburgerMenu() {
       {isOpen && (
         <div className="mt-2 w-64 border rounded-lg bg-white shadow-lg">
           <Link href="/">
-            <div className="block p-4 text-lg hover:bg-blue-500 hover:text-white transition cursor-pointer" onClick={() => setIsOpen(false)}>Home</div>
+            <div className="block p-4 text-lg hover:bg-blue-500 hover:text-white transition cursor-pointer" onClick={() => setIsOpen(false)}>Início</div>
           </Link>
           <Link href="/clima">
             <div className="block p-4 text-lg hover:bg-blue-500 hover:text-white transition cursor-pointer" onClick={() => setIsOpen(false)}>Clima</div>
