@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { FaSun, FaCloud, FaSnowflake, FaCloudRain, FaSmog, FaCloudShowersHeavy, FaMoon } from 'react-icons/fa'; // Importação dos ícones
+import { FaSun, FaCloud, FaSnowflake, FaCloudRain, FaSmog, FaCloudShowersHeavy, FaMoon } from 'react-icons/fa';
 import HamburgerMenu from '../components/HamburgerMenu';
 
 const API_KEY = "676562945a9df25ba516257ff67a9443";
 
+type Weather = {
+  icon: string;
+};
+
+type ClimaData = {
+  main: {
+    temp: number;
+  };
+  weather: Weather[];
+  name: string;
+};
+
 function Clima() {
-  const [climaData, setClimaData] = useState(null);
+  const [climaData, setClimaData] = useState<ClimaData | null>(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -22,7 +34,8 @@ function Clima() {
     });
   }, []);
 
-  function getWeatherIcon(code) {
+
+  function getWeatherIcon(code: string): React.ReactNode  {
     switch (code) {
       case "01d": return <FaSun className="text-yellow-400 text-5xl"/>;
       case "01n": return <FaMoon className="text-blue-300 text-5xl"/>;
@@ -45,6 +58,7 @@ function Clima() {
       default: return <FaSun className="text-yellow-400 text-5xl"/>;
     }
   }
+
 
   return (
     <div className="min-h-screen bg-blue-100 flex items-center justify-center relative">

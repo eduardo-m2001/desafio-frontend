@@ -1,22 +1,35 @@
 import { useState } from 'react';
 import HamburgerMenu from '../components/HamburgerMenu';
 
+type Endereco = {
+  logradouro: string;
+  bairro: string;
+  localidade: string;
+  uf: string;
+};
+
 function BuscaCEP() {
   const [endereco, setEndereco] = useState('');
-  const [resultados, setResultados] = useState([]);
+  const [resultados, setResultados] = useState<Endereco[]>([]);
 
   const buscarCEP = async () => {
-    if (!endereco) return;
+    // Verifica se endereco possui apenas 8 dígitos numéricos.
+    if (!/^[0-9]{8}$/.test(endereco)) return;
 
-    const response = await fetch(`https://viacep.com.br/ws/${endereco}/json/`);
-    const data = await response.json();
+    try {
+        const response = await fetch(`https://viacep.com.br/ws/${endereco}/json/`);
+        const data = await response.json();
 
-    if (data.erro) {
-      setResultados([]);
-    } else {
-      setResultados([data]);
+        if (data.erro) {
+            setResultados([]);
+        } else {
+            setResultados([data]);
+        }
+    } catch (error) {
+        console.error("Erro ao buscar CEP:", error);
+        setResultados([]); // Limpa os resultados em caso de erro.
     }
-  };
+};
 
   return (
     <div className="min-h-screen bg-blue-100 flex items-center justify-center relative">
@@ -24,13 +37,15 @@ function BuscaCEP() {
       <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-md space-y-4">
         <h1 className="text-2xl font-semibold mb-4 text-center">Busca de CEP</h1>
         <div className="flex space-x-4 mb-6">
-          <input
-            className="flex-grow p-2 rounded border"
-            type="text"
-            placeholder="Digite o endereço..."
-            value={endereco}
-            onChange={(e) => setEndereco(e.target.value)}
-          />
+         <input
+          className="flex-grow p-2 rounded border"
+          type="text"
+          placeholder="Digite o CEP..."
+          value={endereco}
+          onChange={(e) => setEndereco(e.target.value)}
+          pattern="^[0-9]{8}$"
+          title="Por favor, insira um CEP válido (apenas 8 dígitos numéricos)."
+         />
           <button
             className="px-4 py-2 bg-blue-500 text-white rounded"
             onClick={buscarCEP}

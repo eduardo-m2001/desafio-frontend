@@ -2,17 +2,17 @@ import { useRef } from 'react';
 import HamburgerMenu from '../components/HamburgerMenu';
 
 function Contato() {
-  const nomeRef = useRef(null);
-  const emailRef = useRef(null);
-  const mensagemRef = useRef(null);
-  const arquivoRef = useRef(null);
+  const nomeRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const mensagemRef = useRef<HTMLTextAreaElement>(null);
+  const arquivoRef = useRef<HTMLInputElement>(null);
 
   const enviarFormulario = () => {
     const dados = {
-      nome: nomeRef.current.value,
-      email: emailRef.current.value,
-      mensagem: mensagemRef.current.value,
-      arquivo: arquivoRef.current.files[0] ? arquivoRef.current.files[0].name : null
+      nome: nomeRef.current?.value,
+      email: emailRef.current?.value,
+      mensagem: mensagemRef.current?.value,
+      arquivo: arquivoRef.current?.files?.[0] ? arquivoRef.current.files[0].name : null
     };
     console.log(dados);
   };
@@ -35,12 +35,12 @@ function Contato() {
             placeholder="Email"
             ref={emailRef}
           />
-          <textarea
+         <textarea
             className="w-full p-2 rounded border"
-            rows="5"
+            rows={5}
             placeholder="Mensagem"
             ref={mensagemRef}
-          ></textarea>
+        ></textarea>
           <input
             className="w-full p-2 rounded border"
             type="file"
