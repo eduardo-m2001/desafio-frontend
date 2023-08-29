@@ -39,13 +39,12 @@ $ git clone https://github.com/eduardo-m2001/desafio-frontend
 - Execute npm install ou yarn para instalar as dependências.
 - Rode npm run dev ou yarn dev para iniciar o servidor de desenvolvimento.
 
-[O resultado FINAL pode ser visto aqui](https://desafio-front-plin.netlify.app/)
-
 ___
 
 # 🤩 Recursos "Tchammmm!" 
 - Resolvi criar uma tela Home, sendo a tela principal do projeto onde terá as páginas para navegação.
 - Criei um componente "Menu Hamburguer" para facilitar a navegação entre as páginas ( Clima, Cep e Contato ).
+- Fiz o Deploy do projeto pelo Netlify, [o resultado FINAL pode ser visto aqui](https://desafio-front-plin.netlify.app/).
 ___
 
 # 🤯 Maiores Dificuldades
